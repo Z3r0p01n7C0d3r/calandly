@@ -1,17 +1,20 @@
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-function App() {
+import { Routes, Route } from "react-router-dom";
+import SideBar from "./components/Sidebar";
+import Index from "./pages/index";
+import CreateSchedulePage from "./pages/CreateSchedulePage";
+import MeetingsPage from "./pages/MeetingsPage";
+import MookingPage from "./pages/ShowBooking";
+
+export default function App() {
   return (
-    <>
-      <div className="border border-primary border bg-light">
-        <div className="d-flex flex-row bd-highlight mb-3">
-          <div className="p-2 bd-highlight">Flex item 1</div>
-          <div className="p-2 bd-highlight">Flex item 2</div>
-        </div>
-      </div>
-    </>
+    <div className="w-full h-screen flex">
+      <SideBar />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/event/creates" element={<CreateSchedulePage />} />
+        <Route path="/meetings" element={<MeetingsPage />} />
+        <Route path="/booking/show/:id" element={<MookingPage />} />
+      </Routes>
+    </div>
   );
 }
-
-export default App;

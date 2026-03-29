@@ -73,7 +73,7 @@ class SlotController extends Controller
             $timePeriod = CarbonPeriod::create($dayStart, "{$duration} minutes", $dayEnd);
 
             foreach ($timePeriod as $time) {
-                $slotEnd = $time->copy()->addMinutes($duration);
+                $slotEnd = $time->copy()->addMinutes((int)$duration);
 
                 if ($slotEnd->gt($dayEnd)) {
                     break;
